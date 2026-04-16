@@ -1,0 +1,54 @@
+slam
+####tab1####
+source ~/unitree_ros2/setup.sh 
+cd ~/go2_ws/ && source install/setup.bash
+ros2 run go2_util odom_pub
+####tab2####
+source ~/unitree_ros2/setup.sh 
+cd ~/go2_ws/ && source install/setup.bash
+ros2 run go2_util tf_pub
+####tab3####
+cd ~/go2_ws/ && source install/setup.bash
+ros2 launch velodyne velodyne-all-nodes-VLP16-launch.py 
+####tab4####
+source ~/unitree_ros2/setup.sh 
+cd ~/go2_ws/ && source install/setup.bash
+ros2 run go2_util sam_time
+####tab5#####
+source ~/unitree_ros2/setup.sh 
+cd ~/go2_ws/ && source install/setup.bash
+ros2 launch go2_description display.launch.py 
+######6#####
+source ~/unitree_ros2/setup.sh 
+ros2 launch slam_toolbox online_async_launch.py use_sim_time:=false
+####tab7#####
+ros2 run nav2_map_server map_saver_cli -f gaon
+
+
+navigation
+####tab1####
+source ~/unitree_ros2/setup.sh 
+cd ~/go2_ws/ && source install/setup.bash
+ros2 run go2_util odom_pub
+####tab2####
+source ~/unitree_ros2/setup.sh 
+cd ~/go2_ws/ && source install/setup.bash
+ros2 run go2_util tf_pub
+####tab3####
+cd ~/go2_ws/ && source install/setup.bash
+ros2 launch velodyne velodyne-all-nodes-VLP16-launch.py 
+####tab4####
+source ~/unitree_ros2/setup.sh 
+cd ~/go2_ws/ && source install/setup.bash
+ros2 run go2_util sam_time
+####tab5#####
+source ~/unitree_ros2/setup.sh 
+cd ~/go2_ws/ && source install/setup.bash
+ros2 launch go2_description display.launch.py 
+####tab6#####
+source ~/unitree_ros2/setup.sh 
+ros2 launch nav2_bringup bringup_launch.py use_sim_time:=False map:=/home/lab/gaon1.yaml
+#####tap7###
+source ~/unitree_ros2/setup.sh 
+python3 ~/unitree_ros2/cmd_vel.py
+
